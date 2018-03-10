@@ -93,7 +93,7 @@ describe("User signup authenticator", () => {
 });
 
 describe("User Login authenticator", () => {
-    it("should return status 401 if no data is provided", done => {
+    it("should return status 400 if no data is provided", done => {
         chai
             .request(app)
             .post("/api/v1/auth/login")
@@ -102,7 +102,7 @@ describe("User Login authenticator", () => {
                 password: null
             })
             .end((err, res) => {
-                res.should.have.status(401);
+                res.should.have.status(400);
                 done();
             });
     });
@@ -116,7 +116,7 @@ describe("User Login authenticator", () => {
                 password: "horus"
             })
             .end((err, res) => {
-                res.should.have.status(401);
+                res.should.have.status(400);
                 done();
             });
     });

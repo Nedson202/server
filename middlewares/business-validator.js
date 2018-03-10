@@ -25,16 +25,16 @@ class validateBusiness {
       .isLength({ min: 1 }).trim();
     req.check('location', 'location is required e.g lagos').notEmpty();
     req.check('category', 'category is required e.g mobile').notEmpty();
-
-    const errors = req.validationErrors();
-
-    if (errors) {
-      res.status(400).json({
-        message: errors[0].msg,
-        error: true
-      });
-    }
-
+    //
+    // const errors = req.validationErrors();
+    //
+    // if (errors) {
+    //   res.status(400).json({
+    //     message: errors[0].msg,
+    //     error: true
+    //   });
+    // }
+    //
     next();
   }
 }
