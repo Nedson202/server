@@ -4,6 +4,8 @@ import expressValidator from 'express-validator';
 import logger from 'morgan';
 import route from './routes/index';
 
+const swaggerDocument = YAML.load(`${process.cwd()}/swagger.yaml`);
+
 const app = express();
 
 const port = 4000;
@@ -14,6 +16,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // validator to check user input
 app.use(expressValidator());
+
+app.use(cors({credentials: true, origin: true }));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(logger('dev'));
 
