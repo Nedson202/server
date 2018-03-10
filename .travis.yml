@@ -3,5 +3,5 @@ node_js:
   - "stable"
 script: "npm test"
 
-after_success: 
-  - "npm install coveralls && cat ./coverage/lcov.info | coveralls"
+after_success:
+  - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
