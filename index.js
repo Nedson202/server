@@ -19,7 +19,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // validator to check user input
 app.use(expressValidator());
 
-app.use(cors({credentials: true, origin: true }));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(logger('dev'));
