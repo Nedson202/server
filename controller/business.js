@@ -129,13 +129,18 @@ class Businesses {
   */
   static deleteBusiness(req, res) {
     const businessId = parseInt(req.params.businessId, 10);
-
+    
     for (let i = 0; i <= businesses.length; i += 1) {
       if (businessId === businesses[i].id) {
         businesses.splice(i, 1);
         res.sendStatus(204);
       }
     }
+
+    return res.status(404).json({
+      messsage: 'Business not found',
+      error: true
+    });
   }
 }
 
