@@ -1,7 +1,17 @@
 language: node_js
 node_js:
-  - "stable"
-script: "npm test"
-
+  - "6"
+notifications:
+  email: false
+cache:
+  directories:
+    - node_modules
+before_script:
+  - npm install
+script:
+  - npm test
+  - npm run check-coverage
 after_success:
-  - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
+  - npm run coverage
+  - npm run report-coverage
+  - npm run coveralls
