@@ -19,7 +19,7 @@ class Reviews {
   static postReview(req, res) {
     const { reviewer, message } = req.body;
     const businessId = parseInt(req.params.businessId, 10);
-    
+
     businesses.forEach((business) => {
       if (business.id === businessId) {
         business.reviews.push({
@@ -33,11 +33,10 @@ class Reviews {
       }
     });
 
-  return res.status(404).send({
-    message: 'Business not found, no review posted',
-    error: true
-  });
-
+    return res.status(404).send({
+      message: 'Business not found, no review posted',
+      error: true
+    });
   }
   /**
     *
@@ -53,9 +52,9 @@ class Reviews {
 
     businesses.forEach((business) => {
       if (business.id === businessId) {
-        res.status(200).json(business.reviews)
+        res.status(200).json(business.reviews);
       }
-    })
+    });
 
     return res.status(404).send({
       message: 'Business not found, no review gotten',

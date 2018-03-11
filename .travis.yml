@@ -3,12 +3,10 @@ node_js:
   - "6"
 notifications:
   email: false
-  
+
 cache:
   directories:
     - node_modules
-install:
-  - npm install mocha-lcov-reporter --save-dev
-  
+
 after_script:
     - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
