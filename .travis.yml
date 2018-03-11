@@ -9,7 +9,7 @@ cache:
     - node_modules
     
 before_script:
-  - npm install
+  - npm install --save-dev nyc
 
 script:
   - npm run test
