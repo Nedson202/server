@@ -1,9 +1,6 @@
 import chaiHttp from 'chai-http';
 import chai from 'chai';
 import app from '../index';
-import httpMocks from 'node-mocks-http';
-import assert from 'assert';
-import * as middleware from '../middlewares/business-filterer';
 
 const [should, expect] = [chai.should(), chai.expect]; // eslint-disable-line no-unused-vars
 
@@ -375,11 +372,5 @@ describe('Get reviews', () => {
         res.should.have.status(200);
         done();
       });
-  });
-});
-
-describe('functional', () => {
-  it('should return 404 if no specified business is found', () => {
-    assert.middleware.sortQuery();
   });
 });
