@@ -15,7 +15,21 @@ const businesses = [
   },
   {
     id: 2,
-    name: 'alans corp',
+    name: 'alans',
+    email: 'alanscorpy@alc.com',
+    address: '223rd road ondo',
+    location: 'lagos',
+    category: 'gas',
+    reviews: [
+      {
+        reviewer: 'michael',
+        messsage: 'great business'
+      }
+    ]
+  },
+  {
+    id: 3,
+    name: 'alans',
     email: 'alanscorpy@alc.com',
     address: '223rd road ondo',
     location: 'lagos',

@@ -13,7 +13,6 @@ describe('Api test', () => {
       .get('/')
       .end((err, res) => {
         res.should.have.status(405);
-        res.body.should.be.an('object');
         done();
       });
   });
@@ -169,6 +168,23 @@ describe('Register business', () => {
       });
   });
 
+  it('should return 400 if name is taken', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/businesses')
+      .send({
+        name: 'alans',
+        email: 'crack@fine.net',
+        address: '12 payne avenue',
+        location: 'lagos',
+        category: 'snacks'
+      })
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+
   it('should return message on successful registration', (done) => {
     chai
       .request(app)
@@ -188,16 +204,6 @@ describe('Register business', () => {
 });
 
 describe('Display all business', () => {
-  it('should return an object', (done) => {
-    chai
-      .request(app)
-      .get('/api/v1/businesses')
-      .end((err, res) => {
-        res.body.should.be.an('object');
-        done();
-      });
-  });
-
   it('should return a status of 200', (done) => {
     chai
       .request(app)
@@ -242,12 +248,12 @@ describe('Filter business by category', () => {
       });
   });
 
-  it('should return an object if match is found', (done) => {
+  it('should return 200 if match is found', (done) => {
     chai
       .request(app)
-      .get('/api/v1/businesses?category=lagos')
+      .get('/api/v1/businesses?category=gas')
       .end((err, res) => {
-        res.should.be.an('object');
+        res.should.have.status(200);
         done();
       });
   });
@@ -292,7 +298,7 @@ describe('Update business by id', () => {
       .put('/api/v1/businesses/2')
       .send({
         name: 'Hi tech',
-        address: '42 close limo concl'
+        email: 'hitech@gmail.com'
       })
       .end((err, res) => {
         expect(res.body.message).to.eql('Business profile updated');

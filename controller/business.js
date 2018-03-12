@@ -137,10 +137,10 @@ class Businesses {
       }
     }
 
-    return res.status(404).json({
-      messsage: 'Business not found',
-      error: true
-    });
+    // return res.status(404).json({
+    //   messsage: 'Business not found',
+    //   error: true
+    // });
   }
 }
 
